@@ -28,20 +28,31 @@ postgresdb|http://localhost:5432/
 - RAM allocation for spark driver is 128mb
 
 # COMMAND
+## Build docker spark image
+```sh
+docker build -t cluster-apache-spark:3.0.2 .
+```
+
 ## Build docker containers
-- docker-compose up -d --build --force-recreate
-- docker cp (local_file_for_tesing) hadoop_namenode_1:/opt/spark/(local_file_for_tesing)
+
+```sh
+docker-compose up -d --build --force-recreate
+docker cp (local_file_for_tesing) hadoop_namenode_1:/opt/spark/(local_file_for_tesing)
+```
 
 
 # HADOOP HDFS AND MAPREDUCE
 ## HDFS Files
-- hadoop fs -mkdir /sample_data
-- wget https://raw.githubusercontent.com/metatron-app/metatron-doc-discovery/master/_static/data/sales-data-sample.csv
-- hadoop fs -put /opt/sample_data/sales-data-sample.csv /sample_data/
+```sh
+hadoop fs -mkdir /sample_data
+wget https://raw.githubusercontent.com/metatron-app/metatron-doc-discovery/master/_static/data/sales-data-sample.csv
+hadoop fs -put /opt/sample_data/sales-data-sample.csv /sample_data/
+```
 
 ## MapReduce
-- namenode $yarn jar share/hadoop/mapreduce/hadoop-mapreduce-examples-3.3.6.jar pi 10 15
-
+```sh
+yarn jar share/hadoop/mapreduce/hadoop-mapreduce-examples-3.3.6.jar pi 10 15
+```
 
 # REFERENCES
 ## HADOOP 

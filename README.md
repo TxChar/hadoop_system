@@ -22,10 +22,10 @@ postgresdb|http://localhost:5432/
 
 
 ## Resource allowcate for SPARK
-CPU CORES each spark-worker is 1 core
-RAM for each spark-worker is 1024 MB
-RAM allocation for spark executors is 256mb
-RAM allocation for spark driver is 128mb
+- CPU CORES each spark-worker is 1 core
+- RAM for each spark-worker is 1024 MB
+- RAM allocation for spark executors is 256mb
+- RAM allocation for spark driver is 128mb
 
 # COMMAND
 ## Build docker containers

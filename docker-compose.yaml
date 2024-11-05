@@ -4,8 +4,6 @@ services:
     image: apache/hadoop:3
     container_name: namnode
     hostname: namenode
-    volumes:
-      - ./Makefile:/opt/hadoop/Makefile
     ports:
       - 9870:9870
     env_file:

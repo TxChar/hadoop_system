@@ -1,16 +1,5 @@
 version: "2"
 services:
-  # hive_metastore:
-  #   image: mariadb
-  #   environment:
-  #     MYSQL_ROOT_PASSWORD: password
-  #     MYSQL_DATABASE: mydatabase
-  #     MYSQL_USER: user
-  #     MYSQL_PASSWORD: password
-  #   volumes:
-  #     - ./data:/var/lib/mysql
-  #     - "./hive_metastore.sql:/docker-entrypoint-initdb.d/1.sql"
-
   namenode:
     image: apache/hadoop:3
     container_name: namnode
@@ -24,7 +13,7 @@ services:
     environment:
       ENSURE_NAMENODE_DIR: "/tmp/hadoop-root/dfs/name"
     command: ["hdfs", "namenode"]
-    # command: bash -c "sudo yum install -y make && sudo make install-spark && make install-python3 && make start-namenode"
+
   datanode_1:
     image: apache/hadoop:3
     container_name: datanode_1
@@ -63,6 +52,7 @@ services:
       - ./config
     volumes:
       - ./test.sh:/opt/test.sh
+ 
   nodemanager:
     image: apache/hadoop:3
     container_name: nodemanager

@@ -1,0 +1,72 @@
+version: "2"
+services:
+  # hive_metastore:
+  #   image: mariadb
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: password
+  #     MYSQL_DATABASE: mydatabase
+  #     MYSQL_USER: user
+  #     MYSQL_PASSWORD: password
+  #   volumes:
+  #     - ./data:/var/lib/mysql
+  #     - "./hive_metastore.sql:/docker-entrypoint-initdb.d/1.sql"
+
+  namenode:
+    image: apache/hadoop:3
+    container_name: namnode
+    hostname: namenode
+    volumes:
+      - ./Makefile:/opt/hadoop/Makefile
+    ports:
+      - 9870:9870
+    env_file:
+      - ./config
+    environment:
+      ENSURE_NAMENODE_DIR: "/tmp/hadoop-root/dfs/name"
+    command: ["hdfs", "namenode"]
+    # command: bash -c "sudo yum install -y make && sudo make install-spark && make install-python3 && make start-namenode"
+  datanode_1:
+    image: apache/hadoop:3
+    container_name: datanode_1
+    command: [ "hdfs", "datanode" ]
+    env_file:
+      - ./config
+  datanode_2:
+    image: apache/hadoop:3
+    container_name: datanode_2
+    command: [ "hdfs", "datanode" ]
+    env_file:
+      - ./config
+
+  datanode_3:
+    image: apache/hadoop:3
+    container_name: datanode_3
+    command: [ "hdfs", "datanode" ]
+    env_file:
+      - ./config
+
+  datanode_4:
+    image: apache/hadoop:3
+    container_name: datanode_4
+    command: [ "hdfs", "datanode" ]
+    env_file:
+      - ./config
+
+  resourcemanager:
+    image: apache/hadoop:3
+    container_name: resourcemanager
+    hostname: resourcemanager
+    command: [ "yarn", "resourcemanager" ]
+    ports:
+      - 8088:8088
+    env_file:
+      - ./config
+    volumes:
+      - ./test.sh:/opt/test.sh
+  nodemanager:
+    image: apache/hadoop:3
+    container_name: nodemanager
+    command: [ "yarn", "nodemanager" ]
+    env_file:
+      - ./config
+

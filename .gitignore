@@ -1,3 +1,7 @@
+#Dataset
 spark-3.5.0-bin-hadoop3.tgz
 100mb-examplefile-com.txt
 *.csv
+
+#Python env
+venv

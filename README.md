@@ -37,12 +37,15 @@ docker build -t cluster-apache-spark:3.0.2 .
 
 ```sh
 docker-compose up -d --build --force-recreate
-docker cp (local_file_for_tesing) hadoop_namenode_1:/opt/spark/(local_file_for_tesing)
 ```
 
 
 # HADOOP HDFS AND MAPREDUCE
 ## HDFS Files
+```sh
+#On your PC
+docker cp (local_file_for_tesing) hadoop_namenode_1:/opt/spark/(file_name_on_hadoop)
+```
 ```sh
 hadoop fs -mkdir /sample_data
 wget https://raw.githubusercontent.com/metatron-app/metatron-doc-discovery/master/_static/data/sales-data-sample.csv

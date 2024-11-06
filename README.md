@@ -48,8 +48,8 @@ yarn jar share/hadoop/mapreduce/hadoop-mapreduce-examples-3.3.6.jar pi 10 15
 
 # REFERENCES
 ## Dataset
--https://www.kaggle.com/datasets/abdullah0a/retail-sales-data-with-seasonal-trends-and-marketing?resource=download
--https://www.kaggle.com/code/djonafegnem/chicago-crime-data-analysis/input
+- https://www.kaggle.com/datasets/abdullah0a/retail-sales-data-with-seasonal-trends-and-marketing?resource=download
+- https://www.kaggle.com/code/djonafegnem/chicago-crime-data-analysis/input
 
 ## HADOOP 
 - https://medium.com/@bayuadiwibowo/deploying-a-big-data-ecosystem-dockerized-hadoop-spark-hive-and-zeppelin-654014069c82

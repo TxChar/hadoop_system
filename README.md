@@ -1,25 +1,14 @@
 # HADOOP AND SPARK (NameNode)
 
 ## General
-Container|Ports
----|---
-Hadoop|9870
-Hadoop Cluster|8088
-spark-master|9090 7077
-spark-worker-1|9091
-spark-worker-2|9092
-postgresdb|5432
-
-## URL
-Services|URL
----|---
-Hadoop|http://localhost:9870/
-Hadoop Cluster|http://localhost:8088/
-spark-master|http://localhost:9090/
-spark-worker-1|http://localhost:9091/
-spark-worker-2|http://localhost:9092/
-postgresdb|http://localhost:5432/
-
+Container|Ports|URL
+---|---|---
+Hadoop|9870|http://localhost:9870/
+Hadoop Cluster|8088|http://localhost:8088/
+spark-master|9090 7077|http://localhost:9090/
+spark-worker-1|9091|http://localhost:9091/
+spark-worker-2|9092|http://localhost:9092/
+postgresdb|5432|http://localhost:5432/
 
 ## Resource allowcate for SPARK
 - CPU CORES each spark-worker is 1 core
@@ -60,6 +49,7 @@ yarn jar share/hadoop/mapreduce/hadoop-mapreduce-examples-3.3.6.jar pi 10 15
 # REFERENCES
 ## Dataset
 -https://www.kaggle.com/datasets/abdullah0a/retail-sales-data-with-seasonal-trends-and-marketing?resource=download
+-https://www.kaggle.com/code/djonafegnem/chicago-crime-data-analysis/input
 
 ## HADOOP 
 - https://medium.com/@bayuadiwibowo/deploying-a-big-data-ecosystem-dockerized-hadoop-spark-hive-and-zeppelin-654014069c82

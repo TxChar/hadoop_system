@@ -6,3 +6,6 @@ spark-3.5.0-bin-hadoop3.tgz
 #Python env
 venv
 __pycache__
+
+#Hadoop
+*.raw

@@ -1,4 +1,4 @@
-# HADOOP AND SPARK (NameNode)
+# Apache Hadoop, Spark, Airflow (Guideline)
 
 ## General
 Container|Ports|URL
@@ -31,21 +31,60 @@ docker-compose up -d --build --force-recreate
 ```
 
 
-# HADOOP HDFS AND MAPREDUCE
-## HDFS Files
+# Setup Hadoop HDFS and Spark
+## HADOOP
+```sh
+docker exec -it namenode bash
+#SETUP HDFS
+export HADOOP_HOME=/opt/hadoop
+export LD_LIBRARY_PATH=$HADOOP_HOME/lib/native:$LD_LIBRARY_PATH
+hdfs dfs -mkdir /user
+hdfs dfs -mkdir /user/root
+hdfs dfs -chmod 777 /user/root
+hdfs dfs -ls /
+#TEST
+echo "This is a test file for HDFS" > testfile.txt
+hdfs dfs -put testfile.txt /user/root/
+hdfs dfs -ls /user/root
+```
+## SPARK
+```sh
+docker exec -it spark-master bashhdfs dfs -mkdir /user
+#SETUP ENV
+export PATH=$PATH:/opt/spark/bin
+export HADOOP_CONF_DIR=/opt/hadoop/etc/hadoop
+export YARN_CONF_DIR=/opt/hadoop/etc/hadoop
+```
+
+## HDFS Files (Let's try to put your data to HDFS)
 ```sh
 #On your PC
-docker cp (local_file_for_tesing) hadoop_namenode_1:/opt/spark/(file_name_on_hadoop)
+docker cp (local_file_for_tesing) namenode:/opt/hadoop/sample_data/(file_name_on_hadoop)
 ```
 ```sh
 hadoop fs -mkdir /sample_data
 wget https://raw.githubusercontent.com/metatron-app/metatron-doc-discovery/master/_static/data/sales-data-sample.csv
 hadoop fs -put /opt/sample_data/sales-data-sample.csv /sample_data/
 ```
-
-## MapReduce
+## Let's try Calculate!
+### MapReduce (namenode)
 ```sh
 yarn jar share/hadoop/mapreduce/hadoop-mapreduce-examples-3.3.6.jar pi 10 15
+```
+
+### SparkSubmit (spark-master) - [YarnMaster]
+```sh
+spark-submit   --master yarn   --deploy-mode cluster   --class org.apache.spark.examples.SparkPi   /opt/spark/examples/jars/spark-examples_2.12-3.0.2.jar
+```
+
+### SparkSubmit (spark-master) - [Master SingleNode]
+```sh
+spark-submit   --master spark://spark-master:7077   --deploy-mode client   --class org.apache.spark.examples.SparkPi   /opt/spark/examples/jars/spark-examples_2.12-3.0.2.jar
+```
+
+### SparkSubmit (spark-master) - [Master Cluster]
+```sh
+spark-submit --master spark://spark-master:7077 --deploy-mode cluster --jars /opt/spark-apps/postgresql-42.2.22.jar --driver-memory 1G --executor-memory 1G /opt/spark-apps/main.py
 ```
 
 # REFERENCES

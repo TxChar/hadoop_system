@@ -5,11 +5,12 @@ Container|Ports|URL
 ---|---|---
 Hadoop|9870|http://localhost:9870/
 Hadoop Cluster|8088|http://localhost:8088/
-spark-master|9090 7077|http://localhost:9090/
-spark-worker-1|9091|http://localhost:9091/
-spark-worker-2|9092|http://localhost:9092/
-postgresdb|5432|http://localhost:5432/
-pgadmin|5432|http://localhost:5050/
+Spark-master|9090 7077|http://localhost:9090/
+Spark-worker-1|9091|http://localhost:9091/
+Spark-worker-2|9092|http://localhost:9092/
+Airflow|8085|http://localhost:8085/
+Postgresdb|5432|http://localhost:5432/
+PgAdmin|5050|http://localhost:5050/
 
 ## Resource allowcate for SPARK
 - CPU CORES each spark-worker is 1 core
